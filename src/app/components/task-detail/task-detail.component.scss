@@ -1,0 +1,36 @@
+.detail {
+  padding: 20px;
+  background: #f5f7fa;
+  border: 1px solid #c8d0d8;
+  border-radius: 8px;
+}
+
+h2 {
+  margin: 0 0 12px;
+}
+
+h3 {
+  margin: 0 0 8px;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+}
+
+dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 12px;
+  margin: 0;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0;
+}

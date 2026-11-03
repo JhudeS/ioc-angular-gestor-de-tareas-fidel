@@ -1,3 +1,5 @@
+<a class="skip-link" href="#main-content">Salta al contingut principal</a>
+
 <div class="container">
   <header>
     <h1>{{ appName }}</h1>
@@ -7,23 +9,23 @@
     </p>
   </header>
 
-  <div class="content">
-    <section class="card">
-      <h2>Dades del projecte</h2>
-      <ul>
-        <li><strong>Aplicació:</strong> {{ appName }}</li>
-        <li><strong>Autor:</strong> Fidel Elvira</li>
-        <li><strong>Mòdul:</strong> DA2_OA01 - EAC1</li>
-        <li><strong>Framework:</strong> Angular 22</li>
-      </ul>
-      <p class="status">Projecte base llest</p>
-    </section>
+  <main id="main-content" tabindex="-1">
+    <app-task-filters
+      [categories]="categories"
+      (filtersApplied)="applyFilters($event)"
+      (filtersReset)="resetFilters()"
+    />
 
-    <aside class="note">
-      <h2>Nota</h2>
-      <p>Les següents unitats ampliaran l'app amb components, serveis i navegació.</p>
-    </aside>
-  </div>
+    <div class="content">
+      <app-task-list
+        [tasks]="filteredTasks"
+        [totalTasks]="tasks.length"
+        [selectedTaskId]="selectedTask?.id ?? null"
+        (taskSelected)="selectTask($event)"
+      />
+      <app-task-detail [task]="selectedTask" />
+    </div>
+  </main>
 </div>
 
 <router-outlet />

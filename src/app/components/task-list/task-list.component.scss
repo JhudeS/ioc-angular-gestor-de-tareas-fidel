@@ -1,0 +1,23 @@
+h2 {
+  margin: 0 0 4px;
+}
+
+.counter {
+  margin: 0 0 12px;
+  color: #52606d;
+}
+
+.task-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.empty {
+  padding: 20px;
+  background: #fff8e1;
+  border-radius: 4px;
+}

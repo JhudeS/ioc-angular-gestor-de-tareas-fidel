@@ -1,0 +1,22 @@
+<section aria-labelledby="task-list-title">
+  <h2 id="task-list-title">Tasques</h2>
+  <p class="counter" role="status" aria-live="polite">
+    Mostrant {{ tasks.length }} de {{ totalTasks }} tasques
+  </p>
+
+  @if (tasks.length > 0) {
+    <ul class="task-list">
+      @for (task of tasks; track task.id) {
+        <li>
+          <app-task-card
+            [task]="task"
+            [selected]="task.id === selectedTaskId"
+            (taskSelected)="taskSelected.emit($event)"
+          />
+        </li>
+      }
+    </ul>
+  } @else {
+    <p class="empty">No s'ha trobat cap tasca amb aquests filtres.</p>
+  }
+</section>

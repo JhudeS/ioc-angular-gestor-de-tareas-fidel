@@ -1,0 +1,39 @@
+.task-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  padding: 14px;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  background: #ffffff;
+  border: 1px solid #c8d0d8;
+  border-radius: 8px;
+
+  &:hover {
+    background: #f5f7fa;
+  }
+
+  &.selected {
+    background: #eaf3fa;
+    border: 2px solid #1d4e6b;
+    padding: 13px;
+  }
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.date {
+  font-size: 0.9rem;
+  color: #52606d;
+}

@@ -1,0 +1,21 @@
+<section class="detail" aria-labelledby="task-detail-title" aria-live="polite">
+  <h2 id="task-detail-title">Detall de la tasca</h2>
+  @if (task) {
+    <h3>{{ task.title }}</h3>
+    <p class="badges">
+      <app-task-badge [label]="task.category" />
+      @if (task.featured) {
+        <app-task-badge label="Destacada" [featured]="true" />
+      }
+    </p>
+    <p>{{ task.description }}</p>
+    <dl>
+      <dt>Data límit</dt>
+      <dd>{{ task.dueDate | date: 'dd/MM/yyyy' }}</dd>
+      <dt>Hores estimades</dt>
+      <dd>{{ task.estimatedHours }} h</dd>
+    </dl>
+  } @else {
+    <p>Selecciona una tasca de la llista per veure'n el detall.</p>
+  }
+</section>

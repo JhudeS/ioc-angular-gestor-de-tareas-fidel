@@ -1,0 +1,14 @@
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #1d4e6b;
+  background: #e1eef6;
+  border-radius: 999px;
+
+  &.featured {
+    color: #6b4500;
+    background: #fff0c2;
+  }
+}

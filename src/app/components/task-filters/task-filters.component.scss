@@ -1,0 +1,72 @@
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  background: #f5f7fa;
+  border: 1px solid #c8d0d8;
+  border-radius: 8px;
+}
+
+.field {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 200px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input,
+select {
+  padding: 8px;
+  font: inherit;
+  background: #ffffff;
+  border: 1px solid #7b8794;
+  border-radius: 4px;
+}
+
+.error {
+  min-height: 1.3em;
+  font-size: 0.9rem;
+  color: #b00020;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 25px;
+}
+
+button {
+  padding: 8px 14px;
+  font: inherit;
+  cursor: pointer;
+  background: #ffffff;
+  border: 1px solid #52606d;
+  border-radius: 4px;
+
+  &.primary {
+    color: #ffffff;
+    background: #1d4e6b;
+    border-color: #1d4e6b;
+  }
+
+  &:disabled {
+    color: #52606d;
+    cursor: not-allowed;
+    background: #d7dee4;
+    border-color: #9aa5b1;
+  }
+}
+
+@media (max-width: 768px) {
+  .actions {
+    padding-top: 0;
+  }
+}

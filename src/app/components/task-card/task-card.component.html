@@ -1,0 +1,16 @@
+<button
+  type="button"
+  class="task-card"
+  [class.selected]="selected"
+  [attr.aria-pressed]="selected"
+  (click)="taskSelected.emit(task)"
+>
+  <span class="badges">
+    <app-task-badge [label]="task.category" />
+    @if (task.featured) {
+      <app-task-badge label="Destacada" [featured]="true" />
+    }
+  </span>
+  <span class="title">{{ task.title }}</span>
+  <span class="date">Data límit: {{ task.dueDate | date: 'dd/MM/yyyy' }}</span>
+</button>

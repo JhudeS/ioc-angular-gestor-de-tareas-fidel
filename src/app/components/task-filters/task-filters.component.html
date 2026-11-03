@@ -1,0 +1,35 @@
+<form class="filters" #filterForm="ngForm" (ngSubmit)="applyFilters()" aria-label="Filtres de tasques">
+  <div class="field">
+    <label for="filter-text">Text de cerca</label>
+    <input
+      id="filter-text"
+      name="text"
+      type="text"
+      required
+      minlength="3"
+      aria-describedby="filter-text-error"
+      [(ngModel)]="text"
+      #textField="ngModel"
+    />
+    <div id="filter-text-error" class="error" role="alert">
+      @if (textField.invalid && (textField.dirty || textField.touched)) {
+        El text de cerca ha de tenir almenys 3 caràcters.
+      }
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="filter-category">Categoria</label>
+    <select id="filter-category" name="category" [(ngModel)]="category">
+      <option value="">Totes les categories</option>
+      @for (option of categories; track option) {
+        <option [value]="option">{{ option }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="actions">
+    <button type="submit" class="primary" [disabled]="filterForm.invalid">Aplicar filtres</button>
+    <button type="button" (click)="resetFilters(filterForm)">Restablir filtres</button>
+  </div>
+</form>

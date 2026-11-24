@@ -2,15 +2,22 @@ export const TASK_CATEGORIES = ['Feina', 'Estudis', 'Casa', 'Salut', 'Personal']
 
 export type TaskCategory = (typeof TASK_CATEGORIES)[number];
 
+export const TASK_STATUSES = ['Pendent', 'En curs', 'Completada'] as const;
+
+export type TaskStatus = (typeof TASK_STATUSES)[number];
+
 export interface Task {
-  id: number;
+  id: string;
   title: string;
   description: string;
   category: TaskCategory;
   dueDate: string;
+  status: TaskStatus;
   estimatedHours: number;
-  featured?: boolean;
+  featured: boolean;
 }
+
+export type NewTask = Omit<Task, 'id'>;
 
 export interface TaskFilterCriteria {
   text: string;

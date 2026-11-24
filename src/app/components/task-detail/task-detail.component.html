@@ -4,6 +4,7 @@
     <h3>{{ task.title }}</h3>
     <p class="badges">
       <app-task-badge [label]="task.category" />
+      <app-task-badge [label]="task.status" [status]="true" />
       @if (task.featured) {
         <app-task-badge label="Destacada" [featured]="true" />
       }
@@ -11,7 +12,9 @@
     <p>{{ task.description }}</p>
     <dl>
       <dt>Data límit</dt>
-      <dd>{{ task.dueDate | date: 'dd/MM/yyyy' }}</dd>
+      <dd>{{ task.dueDate ? (task.dueDate | date: 'dd/MM/yyyy') : 'Sense data' }}</dd>
+      <dt>Estat</dt>
+      <dd>{{ task.status }}</dd>
       <dt>Hores estimades</dt>
       <dd>{{ task.estimatedHours }} h</dd>
     </dl>

@@ -10,20 +10,38 @@
   </header>
 
   <main id="main-content" tabindex="-1">
-    <app-task-filters
-      [categories]="categories"
-      (filtersApplied)="applyFilters($event)"
-      (filtersReset)="resetFilters()"
-    />
+    <app-task-filters [categories]="categories" (criteriaChange)="search($event)" />
+
+    @if (error(); as errorMessage) {
+      <div class="error-banner" role="alert">
+        <div>
+          <p class="error-title">No s'han pogut carregar les tasques</p>
+          <p>{{ errorMessage }}</p>
+        </div>
+        <button type="button" (click)="retry()">Reintentar</button>
+      </div>
+    }
 
     <div class="content">
-      <app-task-list
-        [tasks]="filteredTasks"
-        [totalTasks]="tasks.length"
-        [selectedTaskId]="selectedTask?.id ?? null"
-        (taskSelected)="selectTask($event)"
-      />
-      <app-task-detail [task]="selectedTask" />
+      <div class="results">
+        @if (loading()) {
+          <p class="loading" role="status" aria-live="polite">
+            <span class="spinner" aria-hidden="true"></span>
+            Carregant tasques des de l'API…
+          </p>
+        } @else if (!error()) {
+          <app-task-list
+            [tasks]="tasks()"
+            [selectedTaskId]="selectedTask()?.id ?? null"
+            (taskSelected)="selectTask($event)"
+          />
+        }
+      </div>
+
+      <aside class="side">
+        <app-task-detail [task]="selectedTask()" />
+        <app-task-form [categories]="categories" (taskCreated)="selectTask($event)" />
+      </aside>
     </div>
   </main>
 </div>

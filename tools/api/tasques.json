@@ -1,0 +1,115 @@
+{
+  "tasques": [
+    {
+      "id": "1",
+      "titol": "  Lliurar l'EAC3 d'Angular  ",
+      "descripcio": "Implementar els serveis HTTP, els formularis reactius i lliurar el document de resposta al campus.",
+      "categoria": "estudis",
+      "data_limit": "2026-11-24T23:55:00",
+      "estat": "en_curs",
+      "hores_estimades": "6",
+      "destacada": true
+    },
+    {
+      "id": "2",
+      "titol": "Preparar la reunió de seguiment",
+      "descripcio": "Recollir l'estat de les tasques obertes i preparar l'ordre del dia.",
+      "categoria": "feina",
+      "data_limit": "2026-11-26T10:00:00",
+      "estat": "pendent",
+      "hores_estimades": "2"
+    },
+    {
+      "id": "3",
+      "titol": "Fer la compra setmanal",
+      "descripcio": "  Revisar el rebost, escriure la llista i anar al mercat.  ",
+      "categoria": "casa",
+      "data_limit": "2026-11-28T11:00:00",
+      "estat": "pendent",
+      "hores_estimades": "1,5"
+    },
+    {
+      "id": "4",
+      "titol": "Demanar hora al dentista",
+      "descripcio": "",
+      "categoria": "salut",
+      "data_limit": "2026-11-25T09:00:00",
+      "estat": "completada",
+      "hores_estimades": "0.5",
+      "destacada": false
+    },
+    {
+      "id": "5",
+      "titol": "Repassar la unitat de serveis",
+      "descripcio": "Llegir els materials de la Unitat 3 i fer les activitats de repàs.",
+      "categoria": "estudis",
+      "data_limit": "2026-11-20T18:00:00",
+      "estat": "completada",
+      "hores_estimades": "4"
+    },
+    {
+      "id": "6",
+      "titol": "Enviar la factura mensual",
+      "descripcio": "Generar la factura del mes i enviar-la al departament de comptabilitat.",
+      "categoria": "feina",
+      "data_limit": "2026-11-30T12:00:00",
+      "estat": "pendent",
+      "hores_estimades": "1",
+      "destacada": true
+    },
+    {
+      "id": "7",
+      "titol": "Netejar el traster   ",
+      "categoria": "casa",
+      "data_limit": "2026-12-05T10:00:00",
+      "estat": "pendent",
+      "hores_estimades": "3"
+    },
+    {
+      "id": "8",
+      "titol": "Sortir a córrer tres dies",
+      "descripcio": "Planificar tres sortides de 30 minuts durant la setmana.",
+      "categoria": "salut",
+      "data_limit": "2026-11-27T19:00:00",
+      "estat": "en_curs",
+      "hores_estimades": "1.5"
+    },
+    {
+      "id": "9",
+      "titol": "Renovar el passaport",
+      "descripcio": "Reunir la documentació i demanar cita prèvia a la comissaria.",
+      "categoria": "personal",
+      "data_limit": "2026-12-10T09:30:00",
+      "estat": "pendent",
+      "hores_estimades": "2",
+      "destacada": true
+    },
+    {
+      "id": "10",
+      "titol": "Organitzar les fotos del viatge",
+      "descripcio": "Triar les millors fotos i crear un àlbum per compartir-lo amb la família.",
+      "categoria": "personal",
+      "data_limit": "2026-12-14T17:00:00",
+      "estat": "pendent",
+      "hores_estimades": "2.5"
+    },
+    {
+      "id": "11",
+      "titol": "Actualitzar el currículum",
+      "descripcio": "Afegir els projectes recents i revisar l'apartat de competències.",
+      "categoria": "feina",
+      "data_limit": "2026-12-01T16:00:00",
+      "estat": "pendent",
+      "hores_estimades": "2"
+    },
+    {
+      "id": "12",
+      "titol": "Preparar la prova final",
+      "descripcio": "Fer un resum de cada unitat i resoldre els exercicis de semestres anteriors.",
+      "categoria": "estudis",
+      "data_limit": "2026-12-18T09:00:00",
+      "estat": "pendent",
+      "hores_estimades": "12"
+    }
+  ]
+}

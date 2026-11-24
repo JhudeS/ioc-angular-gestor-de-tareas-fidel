@@ -7,10 +7,13 @@
 >
   <span class="badges">
     <app-task-badge [label]="task.category" />
+    <app-task-badge [label]="task.status" [status]="true" />
     @if (task.featured) {
       <app-task-badge label="Destacada" [featured]="true" />
     }
   </span>
   <span class="title">{{ task.title }}</span>
-  <span class="date">Data límit: {{ task.dueDate | date: 'dd/MM/yyyy' }}</span>
+  <span class="date">
+    Data límit: {{ task.dueDate ? (task.dueDate | date: 'dd/MM/yyyy') : 'Sense data' }}
+  </span>
 </button>

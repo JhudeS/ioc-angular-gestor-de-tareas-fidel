@@ -1,7 +1,11 @@
 <section aria-labelledby="task-list-title">
   <h2 id="task-list-title">Tasques</h2>
   <p class="counter" role="status" aria-live="polite">
-    Mostrant {{ tasks.length }} de {{ totalTasks }} tasques
+    @if (tasks.length === 1) {
+      S'ha trobat 1 tasca
+    } @else {
+      S'han trobat {{ tasks.length }} tasques
+    }
   </p>
 
   @if (tasks.length > 0) {

@@ -7,6 +7,11 @@
   background: #e1eef6;
   border-radius: 999px;
 
+  &.status {
+    color: #1e4620;
+    background: #e3f4e6;
+  }
+
   &.featured {
     color: #6b4500;
     background: #fff0c2;

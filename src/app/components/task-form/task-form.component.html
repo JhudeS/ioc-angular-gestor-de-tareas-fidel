@@ -1,0 +1,131 @@
+<section class="task-form" aria-labelledby="task-form-title">
+  <h2 id="task-form-title">Nova tasca</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+    <div class="field">
+      <label for="new-title">Títol *</label>
+      <input
+        id="new-title"
+        type="text"
+        formControlName="title"
+        [attr.aria-invalid]="showErrors('title')"
+        aria-describedby="new-title-error"
+      />
+      <p id="new-title-error" class="error">
+        @if (showErrors('title')) {
+          @if (form.controls.title.hasError('required')) {
+            El títol és obligatori.
+          } @else if (form.controls.title.hasError('minlength')) {
+            El títol ha de tenir almenys 3 caràcters.
+          } @else {
+            El títol no pot tenir més de 80 caràcters.
+          }
+        }
+      </p>
+    </div>
+
+    <div class="field">
+      <label for="new-description">Descripció</label>
+      <textarea
+        id="new-description"
+        rows="3"
+        formControlName="description"
+        [attr.aria-invalid]="showErrors('description')"
+        aria-describedby="new-description-error"
+      ></textarea>
+      <p id="new-description-error" class="error">
+        @if (showErrors('description')) {
+          La descripció no pot tenir més de 300 caràcters.
+        }
+      </p>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label for="new-category">Categoria *</label>
+        <select
+          id="new-category"
+          formControlName="category"
+          [attr.aria-invalid]="showErrors('category')"
+          aria-describedby="new-category-error"
+        >
+          <option value="" disabled>Tria una categoria</option>
+          @for (option of categories; track option) {
+            <option [value]="option">{{ option }}</option>
+          }
+        </select>
+        <p id="new-category-error" class="error">
+          @if (showErrors('category')) {
+            Cal triar una categoria.
+          }
+        </p>
+      </div>
+
+      <div class="field">
+        <label for="new-status">Estat</label>
+        <select id="new-status" formControlName="status">
+          @for (option of statuses; track option) {
+            <option [value]="option">{{ option }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label for="new-due-date">Data límit *</label>
+        <input
+          id="new-due-date"
+          type="date"
+          formControlName="dueDate"
+          [attr.aria-invalid]="showErrors('dueDate')"
+          aria-describedby="new-due-date-error"
+        />
+        <p id="new-due-date-error" class="error">
+          @if (showErrors('dueDate')) {
+            La data límit és obligatòria.
+          }
+        </p>
+      </div>
+
+      <div class="field">
+        <label for="new-hours">Hores estimades *</label>
+        <input
+          id="new-hours"
+          type="number"
+          min="0.5"
+          max="200"
+          step="0.5"
+          formControlName="estimatedHours"
+          [attr.aria-invalid]="showErrors('estimatedHours')"
+          aria-describedby="new-hours-error"
+        />
+        <p id="new-hours-error" class="error">
+          @if (showErrors('estimatedHours')) {
+            Indica entre 0,5 i 200 hores.
+          }
+        </p>
+      </div>
+    </div>
+
+    <div class="check">
+      <input id="new-featured" type="checkbox" formControlName="featured" />
+      <label for="new-featured">Tasca destacada</label>
+    </div>
+
+    <button type="submit" class="primary" [disabled]="saving()">
+      @if (saving()) {
+        Desant…
+      } @else {
+        Crear tasca
+      }
+    </button>
+
+    @if (successMessage(); as message) {
+      <p class="message success" role="status">{{ message }}</p>
+    }
+    @if (errorMessage(); as message) {
+      <p class="message failure" role="alert">No s'ha pogut crear la tasca. {{ message }}</p>
+    }
+  </form>
+</section>

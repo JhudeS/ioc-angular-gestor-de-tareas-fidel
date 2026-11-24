@@ -1,35 +1,72 @@
-<form class="filters" #filterForm="ngForm" (ngSubmit)="applyFilters()" aria-label="Filtres de tasques">
-  <div class="field">
-    <label for="filter-text">Text de cerca</label>
-    <input
-      id="filter-text"
-      name="text"
-      type="text"
-      required
-      minlength="3"
-      aria-describedby="filter-text-error"
-      [(ngModel)]="text"
-      #textField="ngModel"
-    />
-    <div id="filter-text-error" class="error" role="alert">
-      @if (textField.invalid && (textField.dirty || textField.touched)) {
-        El text de cerca ha de tenir almenys 3 caràcters.
-      }
+<section class="search" aria-labelledby="search-title">
+  <h2 id="search-title">Cercar tasques</h2>
+
+  <form class="filters" [formGroup]="form" (ngSubmit)="submit()" aria-label="Cerca de tasques">
+    <div class="field">
+      <label for="filter-text">Text de cerca</label>
+      <input
+        id="filter-text"
+        type="search"
+        autocomplete="off"
+        formControlName="text"
+        [attr.aria-invalid]="showTextErrors()"
+        aria-describedby="filter-text-feedback"
+      />
+      <div id="filter-text-feedback" class="feedback">
+        @if (showTextErrors() && text.hasError('minlength')) {
+          <p class="error" role="alert">
+            El text de cerca ha de tenir almenys {{ minLength }} caràcters.
+          </p>
+        } @else if (showTextErrors() && text.hasError('maxlength')) {
+          <p class="error" role="alert">
+            El text de cerca no pot tenir més de {{ maxLength }} caràcters.
+          </p>
+        } @else if (text.pending) {
+          <p class="info" role="status">Comprovant a l'API si hi ha tasques amb «{{ trimmedText }}»…</p>
+        } @else if (showTextErrors() && text.hasError('noResults')) {
+          <p class="error" role="alert">No hi ha cap tasca a l'API que contingui «{{ trimmedText }}».</p>
+        } @else if (text.dirty && text.valid && trimmedText.length >= minLength) {
+          <p class="success" role="status">✔ Hi ha tasques a l'API que contenen «{{ trimmedText }}».</p>
+        }
+      </div>
     </div>
-  </div>
 
-  <div class="field">
-    <label for="filter-category">Categoria</label>
-    <select id="filter-category" name="category" [(ngModel)]="category">
-      <option value="">Totes les categories</option>
-      @for (option of categories; track option) {
-        <option [value]="option">{{ option }}</option>
-      }
-    </select>
-  </div>
+    <div class="field">
+      <label for="filter-category">Categoria</label>
+      <select id="filter-category" formControlName="category">
+        <option value="">Totes les categories</option>
+        @for (option of categories; track option) {
+          <option [value]="option">{{ option }}</option>
+        }
+      </select>
+    </div>
 
-  <div class="actions">
-    <button type="submit" class="primary" [disabled]="filterForm.invalid">Aplicar filtres</button>
-    <button type="button" (click)="resetFilters(filterForm)">Restablir filtres</button>
-  </div>
-</form>
+    <div class="actions">
+      <button type="submit" class="primary">Cercar</button>
+      <button type="button" (click)="clear()">Netejar cerca</button>
+    </div>
+  </form>
+
+  <section class="history" aria-labelledby="history-title">
+    <h3 id="history-title">Cerques recents</h3>
+    @if (history().length > 0) {
+      <ul>
+        @for (term of history(); track $index) {
+          <li>
+            <button
+              type="button"
+              class="history-item"
+              [attr.aria-label]="'Tornar a cercar ' + term"
+              (click)="useHistory(term)"
+            >
+              {{ term }}
+            </button>
+          </li>
+        }
+      </ul>
+      <button type="button" class="link" (click)="clearHistory()">Esborrar historial</button>
+    } @else {
+      <p class="empty">Encara no hi ha cap cerca desada.</p>
+    }
+  </section>
+</section>

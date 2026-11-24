@@ -10,7 +10,6 @@ import { TaskCard } from '../task-card/task-card.component';
 })
 export class TaskList {
   @Input({ required: true }) public tasks: Task[] = [];
-  @Input({ required: true }) public totalTasks = 0;
-  @Input() public selectedTaskId: number | null = null;
+  @Input() public selectedTaskId: string | null = null;
   @Output() public taskSelected = new EventEmitter<Task>();
 }
